@@ -27,7 +27,14 @@
             <section>
                 <li class="first">r</li>
                 <li class="second">f</li>
-                <li class="last">s</li>
+                <li>
+                    <a id="signout" 
+                        href="../../logout.php" 
+                        class="fas fa-sign-out-alt" 
+                    >
+
+                    </a>
+                </li>
             </section>
         </div>
     </div>
@@ -68,40 +75,38 @@
                     <li>
                         <div class="summary_cont">
                             <h6>Income Today</h6>
-                            <p>₱1,500</p>
+                            <p>₱0</p>
                         </div>
                     </li>
                     <li>
                         <div class="summary_cont">
                             <h6>Profit Today</h6>
-                            <p>₱500</p>
+                            <p>₱0</p>
                         </div>
                     </li>
                     <li>
                         <div class="summary_cont">
                             <h6>Present Month Profit</h6>
-                            <p>₱1,500</p>
+                            <p>₱0</p>
                         </div>
                     </li>
                 </div>
                 <div class="dashboard_body">
                     <div>
-
-
                         <canvas id="myBarChart"></canvas>
                         <div class="data_from_graphical">
                             <li>
                                 <div class="summary_cont">
                                     <h6>Highest</h6>
-                                    <p>₱80,000</p>
-                                    <div class="date">Sep,9,2004</div>
+                                    <p>₱0</p>
+                                    <div class="date">MM/DD/YYY</div>
                                 </div>
                             </li>
                             <li>
                                 <div class="summary_cont">
                                     <h6>Lowest</h6>
-                                    <p>₱30,000</p>
-                                    <div class="date">Sep,9,2004</div>
+                                    <p>₱0</p>
+                                    <div class="date">MM/DD/YYYY</div>
                                 </div>
                             </li>
                         </div>
@@ -112,8 +117,6 @@
         </div>
 
     </div>
-
-
 
 </body>
 
