@@ -1,0 +1,85 @@
+html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/wall.png'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    width: 300px;
+}
+
+.logo img {
+    width: 150px; 
+    height: auto;
+}
+
+.greet {
+    color: white;
+    font: 200;
+    align-items: center;
+    align-content: center;
+}
+
+.open-hours {
+    font-size: 41px; 
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.slogan {
+    font-size: 12px; 
+    font-weight: normal;
+    line-height: 1.2; 
+    white-space: nowrap; 
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-btn {
+    background: rgb(177,59,70);
+    background: linear-gradient(90deg, rgba(177,59,70,1) 35%, rgba(156,65,82,1) 74%, rgba(197,53,57,1) 100%);
+    color: white;
+}
+
+.signup-btn {
+    background: rgb(58,142,215);
+    background: linear-gradient(90deg, rgba(58,142,215,1) 0%, rgba(44,108,164,1) 22%, rgba(30,75,113,1) 100%);
+    color: white;
+}
+
+.guest-text {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.continue-as {
+    color: white;
+    margin-right: 5px; 
+}
+
+a.guest {
+    background: linear-gradient(90deg, rgba(255,49,49,1) 0%, rgba(85,174,254,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+a.guest:hover {
+    text-decoration: none;
+}
