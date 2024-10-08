@@ -47,8 +47,8 @@
                         <div class="bgsect"></div>
                         <div class="textdp"><i class="fas fa-chart-pie"></i>Dashboard</div>
                     </li>
-                    <li id="cashier">
-                        <div class="textdp"><i class="fas fa-home"></i>Cashier</div>
+                    <li id="menu">
+                        <div class="textdp"><i class="fas fa-home"></i><br>Menu</div>
                     </li>
                     <li id="reports">
                         <div class="textdp"><i class="fas fa-file-medical-alt"></i>Reports</div>

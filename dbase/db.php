@@ -1,13 +1,20 @@
 <?php
-$host = 'localhost'; 
-$db = 'cafedb'; 
-$user = 'root'; 
-$pass = ''; 
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Could not connect to the database $db :" . $e->getMessage());
+class Connection {
+  private $host = 'localhost';
+  private $user = 'root';
+  private $pass = '';
+  private $dbname = 'cafedb'; // Correct the database name
+
+  protected function connect() {
+      try {
+          $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->dbname;
+          $pdo = new PDO($dsn, $this->user, $this->pass);
+          $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          return $pdo;
+      } catch (PDOException $e) {
+          throw new PDOException($e->getMessage());
+      }
+  }
 }
-?>

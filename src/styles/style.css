@@ -5,7 +5,7 @@
 }
 
 .middle_side {
-    background-color: rgba(199, 199, 199, 0.623);
+    background-color: rgba(0, 0, 0, 0.623);
 }
 
 body {
@@ -110,8 +110,6 @@ body {
     transform: translateX(5rem);
     position: absolute;
 }
-
-
 
 
 
@@ -272,6 +270,12 @@ body {
     height: 100vh;
     overflow: hidden;
     padding-top: 4rem;
+    margin: 3.75rem 0 0 4rem;
+    padding-bottom: 10rem;
+    background-image: url('../img/wall.png');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* .monokai_mode .products{
@@ -284,7 +288,7 @@ body {
 
 .counting {
     padding-top: 4rem;
-    background-color: rgb(255, 255, 255);
+    background-color: #181818;
     height: 100%;
     border-left: solid rgba(0, 0, 0, 0.233) 2px;
     position: relative;
@@ -321,7 +325,7 @@ body {
     height: 3.25rem;
     border-radius: .5rem;
     border: solid rgba(136, 136, 136, 0.589) 1px;
-    background-color: white;
+    background-color: #181818;
     place-items: center;
     padding: .8rem 2.5rem .8rem 1rem;
     white-space: nowrap;
@@ -436,7 +440,7 @@ img {
 
 .products_content ol {
     cursor: pointer;
-    background-color: white;
+    background-color: #181818;
     border: solid 1px rgb(189, 189, 189);
     width: 9rem;
     height: 12rem;
@@ -517,7 +521,7 @@ img {
     border: solid 1px rgb(161, 161, 161);
     border-radius: .4rem;
     cursor: pointer;
-    background-color: white;
+    background-color: #363636;
 
 
 }
@@ -645,7 +649,7 @@ img {
 
 .totaling {
     padding-top: 10%;
-    background-color: rgb(221, 221, 221);
+    background-color: #181818;
     height: 57%;
     display: flex;
     flex-direction: column;
@@ -774,5 +778,8 @@ img {
     background-color: rgb(0, 199, 0);
 }
 
-
+#signout {
+    color: rgb(192, 192, 192); 
+    text-decoration: none; 
+}
 

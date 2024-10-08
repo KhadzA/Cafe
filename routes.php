@@ -6,13 +6,13 @@ $routes = [
     '/' => 'src/main/landingPage.php',
     '/login' => 'src/main/login.php',
     '/signup' => 'src/main/signup.php',
-    '/cashier' => 'src/main/cashier.php',
+    '/menu' => 'src/main/menu.php',
     '/history' => 'src/main/history.php',
     '/dashBoard' => 'src/main/dashBoard.php',
     '/myproducts' => 'src/main/myproducts.php',
     '/reports' => 'src/main/reports.php',
     '/settings' => 'src/main/settings.php',
-    '/productView' => 'src/view/productView.php',
+    '/productView' => 'src/views/productView.php',
 ];
 
 function routeToController($uri, $routes) {
