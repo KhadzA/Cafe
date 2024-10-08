@@ -60,13 +60,13 @@
 
         // ADD category
 
-        public function insertCategory($Add_category)
+        public function insertCategory($category_name, $category_image)
         {
-            $stmt = $this->connect()->prepare("INSERT INTO category (category_name) VALUES (?);");
-            if ($stmt->execute([$Add_category])) {
+            $stmt = $this->connect()->prepare("INSERT INTO category (category_name, category_image) VALUES (?, ?);");
+            if ($stmt->execute([$category_name, $category_image])) {
                 return true;
             } else {
-                error_log("Error adding product: " . implode(", ", $stmt->errorInfo()));
+                error_log("Error adding category: " . implode(", ", $stmt->errorInfo()));
             }
         }
 

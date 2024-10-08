@@ -266,7 +266,7 @@ body {
 /* second column */
 
 .products {
-    padding-left: 4.2rem;
+    padding-left: 2rem;
     height: 100vh;
     overflow: hidden;
     padding-top: 4rem;
@@ -316,25 +316,27 @@ body {
 
 
 .category_cont {
-    display: grid;
+    display: table-row;
     place-items: start;
     padding: 1rem 2rem 0 2rem;
 }
 
 .category_nav {
-    height: 3.25rem;
+    height: 30rem;
     border-radius: .5rem;
     border: solid rgba(136, 136, 136, 0.589) 1px;
     background-color: #181818;
     place-items: center;
-    padding: .8rem 2.5rem .8rem 1rem;
+    padding: .8rem 1rem .8rem 1rem;
     white-space: nowrap;
     position: relative;
     width: 96%;
-    overflow: hidden;
+    scrollbar-width: thin;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.category_nav_inner {
+/* .category_nav_inner {
     height: 100%;
     width: 100%;
     gap: .5rem;
@@ -350,13 +352,49 @@ body {
     padding: .2rem .8rem;
 }
 
+.category-img {
+    object-fit: contain;
+} */
 
+.category_nav_inner {
+    display: table-row;
+    justify-content: flex-start;
+    overflow-x: scroll; /* Allows horizontal scrolling */
+    gap: 1rem; /* Space between items */
+}
+
+.category_nav_inner li {
+    display: flex;
+    flex-direction: column; /* Stack image on top of text */
+    align-items: center; /* Center items */
+    border-radius: .3rem;
+    cursor: pointer;
+    padding: .5rem; /* Space around the item */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.category_nav_inner li:hover {
+    background-color: rgba(255, 104, 3, 0.2); /* Light background on hover */
+}
+
+.category-img {
+    width: 100px;  /* Adjust width as needed to fit your layout */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Scale image nicely without cropping */
+    border-radius: .2rem; /* Optional: rounded corners for images */
+}
+
+.category-name {
+    margin-top: 0.5rem; /* Space between image and text */
+    font-size: 0.9rem; /* Adjust font size */
+    text-align: center; /* Center text below image */
+}
 
 .prod_nav {
     background-color: rgba(255, 104, 3, 0.329);
     border: solid 1px;
     border-color: rgba(255, 104, 3, 0.795) !important;
-
+    /* width: 6.7rem; */
 }
 
 
@@ -648,7 +686,7 @@ img {
 
 
 .totaling {
-    padding-top: 10%;
+    padding-top: 1%;
     background-color: #181818;
     height: 57%;
     display: flex;

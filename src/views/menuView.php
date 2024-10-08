@@ -183,22 +183,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // CATEGORY GET
 
+    // if (isset($_POST['transac']) && $_POST['transac'] === "getCateguri") {
+        
+    //     $pdoTemp = new cashierController(null, null, null);
+    //     $categories = $pdoTemp->getAllCategory();
+
+    //     echo '<li class="prod_nav" id="">All</li>';
+    //     if ($categories) {
+            
+    //         foreach ($categories as $cat) {
+    //             echo '<li id="'.$cat['category_id'].'">'.$cat['category_name'].'</li>';
+    //         }
+    //     }
+
+
+    // }
+
     if (isset($_POST['transac']) && $_POST['transac'] === "getCateguri") {
         
         $pdoTemp = new cashierController(null, null, null);
         $categories = $pdoTemp->getAllCategory();
 
+        // Display the "All" option
         echo '<li class="prod_nav" id="">All</li>';
+        
         if ($categories) {
-            
             foreach ($categories as $cat) {
-                echo '<li id="'.$cat['category_id'].'">'.$cat['category_name'].'</li>';
+                // Display each category with its image and name
+                echo '<li id="' . $cat['id'] . '">';
+                echo '<img src="../../src/img/' . $cat['category_image'] . '" alt="' . $cat['category_name'] . '" class="category-img">';
+                // echo '<span>' . $cat['category_name'] . '</span>';
+                echo '</li>';
             }
         }
-
-
     }
-
 
 
 }

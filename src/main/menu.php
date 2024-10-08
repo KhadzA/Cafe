@@ -82,7 +82,6 @@
                             <li class="prod_nav">All</li>
  
                         </div>
-                        <button id="allcategory_open"><img src="../image/seemore.png" alt=""></button>
                     </div>
                 </div>
                 <div class="products_content">
