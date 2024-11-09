@@ -1,0 +1,114 @@
+:root {
+    --gradient-bg: linear-gradient(90deg, rgba(197,53,57,1) 0%, rgba(156,65,82,1) 18%, rgba(115,77,108,1) 53%, rgba(73,88,133,1) 84%, rgba(32,100,159,1) 100%);
+    --gradient-text: linear-gradient(90deg, rgba(255, 49, 49, 1) 0%, rgba(85, 174, 254, 1) 100%);
+    --bg-color: #2c2b2b;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    list-style: none;
+    user-select: none;
+}
+
+.container {
+    text-align: center;
+    padding: 1.25rem;
+    width: 18.75rem;
+}
+
+.logo img {
+    width: 9.375rem;
+    height: auto;
+}
+
+.TextInput {
+    width: 93%;
+    padding: 0.625rem;
+    border: #5a5a5a;
+    border-radius: 0.3125rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    margin-bottom: 0.625rem;
+    margin-top: 0.625rem;
+}
+
+.TextInput::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+button {
+    width: 100%;
+    padding: 0.625rem;
+    margin: 0.625rem 0;
+    border: none;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.login-btn, .signup-btn {
+    background: var(--gradient-bg);
+    color: white;
+}
+
+.toSignUp-text, .toLogin {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+}
+
+.continue-as {
+    color: white;
+    margin-right: 0.3125rem;
+}
+
+a.guest {
+    background: var(--gradient-text);
+    -webkit-background-clip: text; 
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+
+a.guest:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logout-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgba(25,24,30,255);
+    border: 0.125rem solid rgb(162, 162, 162);
+    border-radius: 0.3125rem;
+    transition: background 0.3s, transform 0.3s;
+    margin-left: 1.25rem;
+    margin-top: 6.25rem;
+}
+
+.logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+}
+
+.logout-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 0.9375rem;
+    font-weight: bold;
+}
