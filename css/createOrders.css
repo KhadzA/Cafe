@@ -1,0 +1,243 @@
+.content {
+    margin-left: 4.5rem;
+    margin-top: 2rem;
+    color: white;
+    height: 42rem;
+}
+
+.whole {
+    display: flex;
+    height: 100%;
+}
+
+.left_content,
+.center_content, 
+.right_content 
+{
+    margin: .5rem;
+}
+
+.left_content {
+    width: 20%;
+    background-color: #3f3f3f; 
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden; 
+    text-align: center; 
+}
+
+.center_content {
+    width: 50%;
+    background-color: #3f3f3f;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    text-align: left;
+    overflow: hidden;
+}
+
+.right_content {
+    width: 30%;
+    background-color: #3f3f3f;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    overflow-y: hidden;
+    text-align: center;
+}
+
+.left_content a {
+    text-decoration: none;
+}
+
+.category-link {
+    color: white;
+}
+
+.left_content ul, 
+.center_content ul, 
+.right_content ul 
+{
+    padding: 0;
+    margin-top: 1rem;
+}
+
+#product-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 35rem;
+    margin-top: 1rem;
+    display: flex;
+}
+
+.category-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 35rem;
+}
+
+.category-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.category-list ul li {
+    margin-bottom: 0.5rem; 
+}
+
+.category-list ul li a {
+    display: block; 
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    color: #f0f0f0; 
+    text-align: center;
+    border: 2px solid #444; 
+    border-radius: 5px;
+    background-color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.category-list ul li a:hover {
+    background-color: #555; 
+    border-color: #c53539; 
+    color: #fff;
+}
+
+.category-list li.active a {
+    background-color: #555; 
+    border-color: #c53539;
+    color: #fff;
+}
+
+.product-item .product-image {
+    height: 5rem;
+    width: auto;
+}
+
+.product-item .product-name {
+    width: auto;
+}
+
+.product-item {
+    display: flex; 
+    width: 10rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #f0f0f0; 
+    text-align: center;
+    border: 2px solid #444; 
+    border-radius: 5px;
+    background-color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    height: 11.5rem;
+    margin: 0.5rem; 
+}
+
+.product-item:hover {
+    background-color: #555; 
+    border-color: #c53539; 
+    color: #fff;
+}
+
+.product-item.active {
+    background-color: #555; 
+    border-color: #c53539;
+    color: #fff;
+}
+
+.cart_header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cart_header #removeAllFromCart {
+    color: #c53539;
+    cursor: pointer;
+}
+
+.cart-product-price {
+    font-weight: bold;
+}
+
+div#cart {
+    height: 30rem;
+    overflow: auto;
+    border: 1px solid #ffffff;
+}
+
+#place_order {
+    background-color: #333;
+    border: 2px solid #444; 
+    color: white;
+    padding: .5rem;
+}
+
+#place_order:hover {
+    background-color: #555; 
+    border-color: #c53539; 
+    color: #fff;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.start {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; 
+    width: 5rem;
+}
+
+.start .small {
+    display: flex;
+    justify-content: center;
+    font-size: smaller;
+}
+
+.cart-item-name {
+    font-weight: bold;
+}
+
+.product-specs {
+    font-size: 0.85em; 
+    color: #666; 
+}
+
+.proice {
+    text-align: center;
+    flex: 1; 
+    font-size: 1em;
+    font-weight: bold;
+    width: 5rem;
+}
+
+.quantite {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.cart-item-quantity {
+    font-size: 1em;
+    padding: 0 4px; 
+}
+
+.quantite i {
+    cursor: pointer;
+    font-size: 1.2em; 
+}
+
