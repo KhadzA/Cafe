@@ -67,7 +67,7 @@ $(document).ready(function () {
         } else {
             // If the product is not in the cart, add it
             $('#cart').append(`
-                <div class="cart-item" id="cart-item-${productId}" data-product-price="${productPrice}">
+                <div class="cart-item" id="cart-item-${productId}" data-price="${productPrice}" data-id="${productId}" data-quantity="1" data-size="${productSpecs}" data-sugar-level="${productSpecs}">
                     <div class="start">
                         <span class="cart-item-name">${productName}</span>
                         <div class="small">
@@ -84,6 +84,7 @@ $(document).ready(function () {
                     </div>
                 </div>
             `);
+
         }
 
         updateTotalAmount();
@@ -92,7 +93,7 @@ $(document).ready(function () {
     // Event delegation for add and remove item functionality in the cart
     $('#cart').on('click', '.add-item', function () {
         const productId = $(this).data('product-id');
-        const productPrice = parseFloat($(`#cart-item-${productId}`).data('product-price'));
+        const productPrice = parseFloat($(`#cart-item-${productId}`).data('price')); // Use correct data attribute
         
         let quantityElement = $(`#cart-item-${productId} .cart-item-quantity`);
         let quantity = parseInt(quantityElement.text()) + 1;
@@ -108,7 +109,7 @@ $(document).ready(function () {
 
     $('#cart').on('click', '.remove-item', function () {
         const productId = $(this).data('product-id');
-        const productPrice = parseFloat($(`#cart-item-${productId}`).data('product-price'));
+        const productPrice = parseFloat($(`#cart-item-${productId}`).data('price')); // Use correct data attribute
         
         let quantityElement = $(`#cart-item-${productId} .cart-item-quantity`);
         let quantity = parseInt(quantityElement.text());
@@ -134,16 +135,67 @@ $(document).ready(function () {
         // Sum the subtotals of each cart item
         $('#cart .cart-item').each(function () {
             let subtotal = parseFloat($(this).find('.cart-item-subtotal').text().replace('₱', ''));
-            totalAmount += subtotal;
+            if (!isNaN(subtotal)) { // Check for NaN
+                totalAmount += subtotal;
+            }
         });
 
         // Update total amount display
         $('.total_amount').text(`Total Amount: ₱${totalAmount.toFixed(2)}`);
     }
 
+
     // Event handler to remove all items from the cart
-    $('#removeAllFromCart').on('click', function () {
+    $(document).on('click', '#removeAllFromCart', function () {
+        // Clear all items from the cart
         $('#cart').empty();
+
+        // Update the total amount to 0
         updateTotalAmount();
     });
+
+
+
+    document.getElementById('place_order').addEventListener('click', function() {
+        // Gather cart data
+        const cartItems = [];
+        $('#cart .cart-item').each(function() {
+            const productId = $(this).data('id');
+            const quantity = parseInt($(this).find('.cart-item-quantity').text());
+            const size = $(this).data('size'); 
+            const sugarLevel = $(this).data('sugar-level'); 
+            const price = parseFloat($(this).data('price'));
+
+            cartItems.push({
+                product_id: productId,
+                quantity: quantity,
+                size: size || null,  
+                sugar_level: sugarLevel || null,  
+                price: price
+            });
+
+        });
+
+        const totalAmount = parseFloat($('.total_amount').text().replace('Total Amount: ₱', ''));
+
+        $.post('../../view/createOrders.view.php', {
+            action: 'place_orders',
+            cart_items: cartItems,
+            total_amount: totalAmount
+        }, function(response) {
+            console.log(response); 
+            if (response.success) {
+                alert("Order placed successfully!");
+                window.location.reload();
+            } else {
+                alert("Failed to place order. Please try again.");
+            }
+        }, 'json');
+
+    });
+
+
+
+
+
 });
