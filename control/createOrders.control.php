@@ -30,7 +30,7 @@ class CreateOrdersCtrl extends CreateOrdersModel {
                 $this->handleAddToCart();
                 break;
 
-            case 'place_order':
+            case 'place_orders':
                 $this->handlePlaceOrder();
                 break;
 
@@ -76,14 +76,58 @@ class CreateOrdersCtrl extends CreateOrdersModel {
 
 
     private function handlePlaceOrder() {
+        $cartItems = $_POST['cart_items'] ?? [];
+        $totalAmount = $_POST['total_amount'] ?? 0;
+        $userId = 1; // Placeholder user ID
 
+        if (empty($cartItems) || $totalAmount <= 0) {
+            echo json_encode(['success' => false, 'message' => 'Invalid cart data']);
+            exit();
+        }
+
+        // Insert into orders table
+        $orderId = $this->addOrder($userId, $totalAmount);
+
+        if (!$orderId) {
+            echo json_encode(['success' => false, 'message' => 'Failed to create order']);
+            exit();
+        }
+
+        // Loop through each cart item and insert into order_items
+        foreach ($cartItems as $item) {
+            $productId = $item['product_id'];
+            $quantity = $item['quantity'];
+            $price = $item['price'];
+            
+            // Check for size and sugar level IDs, set to null if not found
+            $sizeId = isset($item['size']) ? $this->getSizeIdBySize($item['size']) : null;
+            $sugarLevelId = isset($item['sugar_level']) ? $this->getSugarLevelIdByLevel($item['sugar_level']) : null;
+
+            // Set `null` if `getSizeIdBySize` or `getSugarLevelIdByLevel` returned no ID
+            if (!$sizeId) {
+                $sizeId = null;
+            }
+            if (!$sugarLevelId) {
+                $sugarLevelId = null;
+            }
+
+            // Insert into order_items table
+            $this->addOrderItem($orderId, $productId, $userId, $quantity, $sizeId, $sugarLevelId, $price);
+        }
+
+        echo json_encode(['success' => true, 'message' => 'Order placed successfully']);
+        exit();
     }
-
 
 
     ///REDIRECT
     private function redirectTo404() {
         header("Location: ../../pages/404.php");
+        exit();
+    }
+
+    private function redirectToOrders() {
+        header("Location: ../../pages/Orders");
         exit();
     }
 }
