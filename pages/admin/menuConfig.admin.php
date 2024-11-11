@@ -29,7 +29,7 @@ include __DIR__ . '/../../view/menu.view.php';
     <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script> -->
 
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/menu.css">
+    <link rel="stylesheet" href="../../css/menuConfig.css">
     <!-- <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css"> -->
 
