@@ -67,8 +67,8 @@ include 'view/menu.view.php';
                     <li id="AdminDashboard" class="AdminDashboard"><i class="fas fa-chart-bar"></i> <span>Dashboard</span></li>
                     <li id="Menu" class="Menu"><i class="fa-solid fa-clipboard-list"></i> <span>Menu</span></li>
                     <li id="MenuConfig" class="MenuConfig"><i class="fa-solid fa-sliders"></i> <span>Menu Config</span></li>
-                    <li id="CreateOrders" class="Menu"><i class="fas fa-cash-register"></i> <span>Create Orders</span></li>
-                    <li id="orders" class="orders"><i class="fas fa-th-list"></i> <span>Orders</span></li>
+                    <li id="CreateOrders" class="CreateOrders"><i class="fas fa-cash-register"></i> <span>Create Orders</span></li>
+                    <li id="Orders" class="Orders"><i class="fas fa-th-list"></i> <span>Orders</span></li>
                     <li id="manage" class="manage"><i class="fas fa-users-cog"></i> <span>Manage</span></li>
                     <li id="history" class="history"><i class="fas fa-history"></i> <span>History</span></li>
                 </section>

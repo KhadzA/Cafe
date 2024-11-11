@@ -93,6 +93,21 @@ class CreateOrdersModel extends dBase {
     }
 
     
+public function getSizeNameById($sizeId) {
+    $sql = "SELECT size FROM product_size WHERE size_id = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$sizeId]);
+    return $stmt->fetchColumn();
+}
+
+public function getSugarLevelNameById($sugarLevelId) {
+    $sql = "SELECT sugar_level FROM product_sugar_level WHERE sugar_level_id = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute([$sugarLevelId]);
+    return $stmt->fetchColumn();
+}
+
+    
 
     //CART
     public function addOrder($userId, $totalAmount) {
@@ -104,24 +119,21 @@ class CreateOrdersModel extends dBase {
 
 
 
-    public function addOrderItem($orderId, $productId, $userId, $quantity, $sizeId = null, $sugarLevelId = null, $price) {
-        $sql = "INSERT INTO order_items (order_id, product_id, user_id, quantity, size_id, sugar_level_id, price) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $this->connect()->prepare($sql);
-        
-        // Bind parameters, including NULL for optional fields if they are not set
-        $stmt->bindValue(1, $orderId, PDO::PARAM_INT);
-        $stmt->bindValue(2, $productId, PDO::PARAM_INT);
-        $stmt->bindValue(3, $userId, PDO::PARAM_INT);
-        $stmt->bindValue(4, $quantity, PDO::PARAM_INT);
-        $stmt->bindValue(5, $sizeId, $sizeId !== null ? PDO::PARAM_INT : PDO::PARAM_NULL);
-        $stmt->bindValue(6, $sugarLevelId, $sugarLevelId !== null ? PDO::PARAM_INT : PDO::PARAM_NULL);
-        $stmt->bindValue(7, $price, PDO::PARAM_STR);
-
-        $stmt->execute();
-    }
+public function addOrderItem($orderId, $productId, $userId, $quantity, $sizeId, $sugarLevelId, $price, $productName, $sizeName, $sugarLevelName) {
+    $sql = "INSERT INTO order_items (order_id, product_id, product_name, user_id, quantity, size_id, sugar_level_id, price, size_name, sugar_level_name) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([$orderId, $productId, $productName, $userId, $quantity, $sizeId, $sugarLevelId, $price, $sizeName, $sugarLevelName]);
+}
 
 
+
+    // public function addOrderItem($orderId, $productId, $userId, $quantity, $sizeId, $size, $sugarLevelId, $sugarLevel, $price, $productName) {
+    //     $sql = "INSERT INTO order_items (order_id, product_id, product_name, user_id, quantity, size_id, size_value,  sugar_level_id, sugar_level_value, price) 
+    //             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    //     $stmt = $this->conn->prepare($sql);
+    //     $stmt->execute([$orderId, $productId, $productName, $userId, $quantity, $sizeId, $size, $sugarLevelId, $sugarLevel, $price]);
+    // }
 
 
 }

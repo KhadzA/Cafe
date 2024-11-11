@@ -50,8 +50,10 @@ $(document).ready(function () {
         });
     }
 
-    // Function to add a product to the cart
     function addToCart(productId, productName, productSpecs, productPrice) {
+        // Assuming productSpecs contains size and sugar level, split them
+        const [size, sugarLevel] = productSpecs.split(" "); 
+
         let cartItem = $(`#cart-item-${productId}`);
 
         if (cartItem.length) {
@@ -67,11 +69,11 @@ $(document).ready(function () {
         } else {
             // If the product is not in the cart, add it
             $('#cart').append(`
-                <div class="cart-item" id="cart-item-${productId}" data-price="${productPrice}" data-id="${productId}" data-quantity="1" data-size="${productSpecs}" data-sugar-level="${productSpecs}">
+                <div class="cart-item" id="cart-item-${productId}" data-price="${productPrice}" data-id="${productId}" data-quantity="1" data-size="${size}" data-sugar-level="${sugarLevel}">
                     <div class="start">
                         <span class="cart-item-name">${productName}</span>
                         <div class="small">
-                            <span class="product-size-sugar">${productSpecs}</span> 
+                            <span class="product-size-sugar">${size} ${sugarLevel}</span> 
                         </div>
                     </div>
                     <div class="proice">
@@ -84,16 +86,16 @@ $(document).ready(function () {
                     </div>
                 </div>
             `);
-
         }
 
         updateTotalAmount();
     }
 
+
     // Event delegation for add and remove item functionality in the cart
     $('#cart').on('click', '.add-item', function () {
         const productId = $(this).data('product-id');
-        const productPrice = parseFloat($(`#cart-item-${productId}`).data('price')); // Use correct data attribute
+        const productPrice = parseFloat($(`#cart-item-${productId}`).data('price')); 
         
         let quantityElement = $(`#cart-item-${productId} .cart-item-quantity`);
         let quantity = parseInt(quantityElement.text()) + 1;
@@ -109,7 +111,7 @@ $(document).ready(function () {
 
     $('#cart').on('click', '.remove-item', function () {
         const productId = $(this).data('product-id');
-        const productPrice = parseFloat($(`#cart-item-${productId}`).data('price')); // Use correct data attribute
+        const productPrice = parseFloat($(`#cart-item-${productId}`).data('price')); 
         
         let quantityElement = $(`#cart-item-${productId} .cart-item-quantity`);
         let quantity = parseInt(quantityElement.text());
@@ -161,6 +163,7 @@ $(document).ready(function () {
         const cartItems = [];
         $('#cart .cart-item').each(function() {
             const productId = $(this).data('id');
+            const productName = $(this).find('.cart-item-name').text();
             const quantity = parseInt($(this).find('.cart-item-quantity').text());
             const size = $(this).data('size'); 
             const sugarLevel = $(this).data('sugar-level'); 
@@ -168,9 +171,10 @@ $(document).ready(function () {
 
             cartItems.push({
                 product_id: productId,
+                product_name: productName,
                 quantity: quantity,
-                size: size || null,  
-                sugar_level: sugarLevel || null,  
+                size: size,  
+                sugar_level: sugarLevel,  
                 price: price
             });
 
@@ -193,9 +197,6 @@ $(document).ready(function () {
         }, 'json');
 
     });
-
-
-
 
 
 });
