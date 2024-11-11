@@ -14,7 +14,6 @@
     gap: 1rem;
     margin-left: 4.5rem;
     user-select: none;
-    padding: 0 1rem;
 }
 
 .container {
@@ -26,7 +25,7 @@
 .topLeft, .topRight, .bottomLeft, .bottomRight {
     margin: 0;
     padding: 2rem;
-    background-color: #2e2e2e;
+    background-color: #2c2b2b;
     border-radius: 8px;
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
     color: #f0f0f0;
@@ -117,23 +116,10 @@ button[type="submit"]:hover {
 }
 
 .category-list {
-    border: 0.0625rem solid #616161;
+    border: 0.0625rem solid #ccc;
     padding: 0.625rem;
     height: 16rem;
     overflow-y: auto;
-    background-color: #353434;
-    border-radius: .3rem;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-#product-list {
-    border: 0.0625rem solid #616161;
-    padding: 0.625rem;
-    height: 16rem;
-    overflow-y: auto;
-    background-color: #353434;
-    border-radius: .3rem;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 ::-webkit-scrollbar {
@@ -320,6 +306,13 @@ label#file-label {
     font-weight: bold;
 }
 
+#product-list {
+    border: 0.0625rem solid #ccc;
+    padding: 0.625rem;
+    height: 16rem;
+    overflow-y: auto;
+}
+
 .category-list ul {
     list-style: none;
     padding: 0;
@@ -345,6 +338,222 @@ label#file-label {
 }
 
 .category-list ul li a:hover {
+    background-color: #555; 
+    border-color: #c53539; 
+    color: #fff;
+}
+
+.leftSide h2 {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.rightSide h2 {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.leftSide button, .rightSide button {
+    background: none; 
+    padding: 0; 
+    cursor: pointer;
+    color: white;
+    width: 2rem;
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.189);
+}
+
+.all-category-item, .all-product-item {
+    width: 40rem;
+    height: auto;
+    display: flex;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    border: 2px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    margin: .5rem;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a.all-category-link, h4 {
+    width: 15rem;
+}
+
+.all-category-item a, .all-product-item h4 {
+    display: flex;
+    display: unset;
+}
+
+.all-category-list ul {
+    padding: 0;
+}
+
+.content .all-category-list li {
+    width: 40rem;
+    height: auto;
+    display: flex;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    border: 2px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    margin: .5rem;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.all-category-list #separate {
+    display: flex;
+    justify-content: center;
+}
+
+.all-category-list a {
+    text-decoration: none; 
+    color: inherit;
+   width: 100%;
+}
+
+
+.all-category-list {
+    border: 0.0625rem solid #ccc;
+    padding: 0.625rem;
+    height: 38rem;
+    overflow-y: auto;
+}
+
+#all-product-list {
+    border: 0.0625rem solid #ccc;
+    padding: 0.625rem;
+    height: 38rem;
+    overflow-y: auto;
+}
+
+.all-category-list, #all-product-list {
+    margin-right: .5rem;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modalContent {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--body-color);
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modalHeader {
+  padding: 2px 16px;
+  background-color: #c53539;
+  color: white;
+}
+
+.modalContent .forms {
+    padding: 2px 16px;
+    background-color: #201e1e;
+}
+
+.modalContent .middle-bottom {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modalContent .bottom {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem;
+    height: 3rem;
+}
+
+.modalContent label {
+    color: white;
+    margin: 1rem 0 0 0;
+}
+
+.img-price {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.img-price label {
+    margin: 1rem;
+}
+
+.button-group {
+    display: flex;
+}
+
+.edit-category-btn {
+    margin: 0 1rem;
+}
+
+.all-product-item h4 {
+    margin: 0;
+}
+
+.content .all-category-list li:hover {
+    background-color: #555; 
+    border-color: #c53539; 
+    color: #fff;
+}
+
+.content .all-product-item:hover {
     background-color: #555; 
     border-color: #c53539; 
     color: #fff;

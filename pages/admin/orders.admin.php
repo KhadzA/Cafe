@@ -6,6 +6,9 @@ if (!isset($_SESSION['user_id']) && $_SESSION['role'] !== 'admin') {
     header("Location: ../../"); 
     exit();
 }
+
+include 'view/orders.view.php';
+
 ?>
 
 
@@ -20,10 +23,12 @@ if (!isset($_SESSION['user_id']) && $_SESSION['role'] !== 'admin') {
 
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/script.js"></script>
+    <script src="../../js/orders.js"></script>
     <!-- <script src="../../resources/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
     <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script> -->
 
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/orders.css">
     <!-- <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css"> -->
 
@@ -79,8 +84,41 @@ if (!isset($_SESSION['user_id']) && $_SESSION['role'] !== 'admin') {
         </nav>
 
         <main class="content">
-            <p>ADMHEN</p>
+
+            <div class="orderBox">
+
+                <?php foreach ($orders as $order): ?>
+
+                    <div class="order-container">
+
+                        <div class="orderDetail">
+                            <p class="mainDetail"> Order <?php echo $order['order_id']; ?> </p>
+                            <p> <?php echo $order['order_date']; ?> </p>
+                            <p> ₱<?php echo $order['total_amount']; ?> </p>
+                        </div>
+                        
+                        <div class="funcThings">      
+
+                            <select class="order-status-dropdown" data-order-id="<?php echo $order['order_id']; ?>">
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+
+
+                            <button class="delete-order" data-order-id="<?php echo $order['order_id']; ?>">Delete</button>
+                            <button class="generate-receipt" data-order-id="<?php echo $order['order_id']; ?>">Show Receipt</button>
+                        </div>
+
+                    </div>
+
+                <?php endforeach; ?>
+
+            </div>
+
         </main>
+
+
     </div>
 </body>
 
