@@ -20,7 +20,7 @@ $routes = [
     'Menu' => 'pages/admin/menu.admin.php',
     'MenuConfig' => 'pages/admin/menuConfig.admin.php',
     'CreateOrders' => 'pages/admin/createOrders.admin.php',
-    'orders' => 'pages/admin/orders.admin.php',
+    'Orders' => 'pages/admin/orders.admin.php',
 
     
     // 'control/login.control.php',
