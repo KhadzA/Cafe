@@ -26,6 +26,15 @@ class OrdersCtrl extends OrdersModel {
         return $this->getAllOrders();
     }
 
+    public function getOrderById($order_id) {
+        return $this->getOrderDetails($order_id); 
+    }
+
+    public function getOrderItems($order_id) {
+        return $this->getOrderItemsByOrderId($order_id); 
+    }
+
+
 
 
     //Redirect

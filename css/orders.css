@@ -91,56 +91,184 @@
 }
 
 
-.receipt-container {
-    width: 320px;
-    margin: auto;
+
+/* Modal styling */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalContent {
+    background-color: #fefefe;
+    margin: 10% auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-.header {
+    border: 1px solid #888;
+    width: 50%;
     text-align: center;
+    border-radius: 10px;
 }
-.header h1 {
-    margin: 0;
-    font-size: 18px;
+
+.Cash {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
 }
-.header p {
+
+.Cash button {
+    width: 10rem;
+    height: 3rem;
+    padding: 0;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #888;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Cash button:hover {
+background-color: #9999;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    cursor: pointer;
+}
+
+
+
+/* Receipt Container */
+.receipt-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header Styling */
+.receipt-container .header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.receipt-container .header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #c53539; /* Match your theme */
     margin: 0;
+}
+
+.receipt-container .header p {
     font-size: 14px;
+    margin: 2px 0;
+}
+
+/* Order Info */
+.order-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 15px;
     color: #666;
 }
-.order-info {
-    margin-top: 10px;
-    font-size: 14px;
-    text-align: center;
-    font-weight: bold;
-}
-.order-info span {
-    display: inline-block;
-    width: 50%;
-}
+
+/* Table Styling */
 .table {
     width: 100%;
-    margin-top: 10px;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
+
 .table th, .table td {
     padding: 8px;
     text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.table td {
     font-size: 14px;
 }
-.table th {
-    background-color: #cccccc;
+
+/* Total Amount */
+.total {
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
     color: #333;
 }
-.table tr:nth-child(even) {
-    background-color: #f9f9f9;
+
+.total strong {
+    color: #c53539;
 }
-.total {
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: right;
+
+@media print {
+    body {
+        visibility: hidden;
+    }
+
+    .receipt-container {
+        visibility: visible;
+        width: 302px; 
+        background-color: white;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .header h1 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .order-info, .table, .payment-info, .total {
+        font-size: 12px; 
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 5px 0;
+    }
+
+    .table th, .table td {
+        padding: 3px;
+        text-align: left;
+    }
+
+    .orderBox, .order-container, .funcThings, .modal {
+        display: none;
+    }
+
+    #header,
+    #footer,
+    #nav {
+        display: none !important;
+    }
 }

@@ -1,19 +1,9 @@
 <?php
 // session_start();
 
-if (!isset($_SESSION['user_id']) && $_SESSION['role'] !== 'admin') {
-    header("Location: ../../"); 
-    exit();
-}
-
-else if (!isset($_SESSION['user_id']) && $_SESSION['role'] !== 'cashier') {
-    header("Location: ../../"); 
-    exit();
-}
-
 include 'view/orders.view.php';
-
 ?>
+
 
 
 <!DOCTYPE html>
@@ -26,12 +16,12 @@ include 'view/orders.view.php';
     <link rel="icon" href="../../image/Cafe_Logo.png" type="image/icon type">
 
     <script src="../../js/jquery-3.5.1.min.js"></script>
-    <script src="../../js/script.js"></script>
+    <!-- <script src="../../js/script.js"></script> -->
     <script src="../../js/orders.js"></script>
     <!-- <script src="../../resources/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
     <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script> -->
 
-    <link rel="stylesheet" href="../../css/style.css">
+    <!-- <link rel="stylesheet" href="../../css/style.css"> -->
     <link rel="stylesheet" href="../../css/orders.css">
     <!-- <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css"> -->
@@ -44,21 +34,32 @@ include 'view/orders.view.php';
 
 </head>
 
-<body>
+<body>                      <!-- Change the body to this if that necessary came:      <body onload="window.print();"> -->
 
-    <div class="receipt-container">
+    <!-- Remove this thing if necessary -->
+    <script>
+        window.onload = function() {
+            window.print();  // Trigger the print dialog when the page loads
+            window.onafterprint = function() {
+                window.close();  // Close the window after printing is done
+            };
+        };
+    </script>
+
+    
+
+    <div class="receipt-container"> 
         <div class="header">
             <h1>CAFE ALEGRIA</h1>
-            <p>Zaragosa Street, ZC, Philippines</p>
-            <p>cafealegriya@gmail.com</p>
-            <p>Opening Hours: 10am-10pm</p>
+            <!-- Other header information -->
         </div>
-
+        
         <div class="order-info">
-            <span>Order no: <?php echo $order['order_id']; ?></span>
-            <span>Date: <?php echo $order['order_date']; ?></span>
+            <span>Order no: <?php echo htmlspecialchars($order_id); ?></span>
+            <span>Date: <?php echo htmlspecialchars($order['order_date']); ?></span>
         </div>
 
+        <!-- Table for order items -->
         <table class="table">
             <thead>
                 <tr>
@@ -68,24 +69,26 @@ include 'view/orders.view.php';
                 </tr>
             </thead>
             <tbody>
-                <!-- Begin PHP loop here -->
                 <?php foreach ($order_items as $item): ?>
                     <tr>
-                        <td><?php echo $item['quantity']; ?></td>
-                        <td><?php echo $item['product_name']; ?> <?php echo $item['size']; ?></td>
-                        <td><?php echo number_format($item['amount'], 2); ?></td>
+                        <td><?php echo htmlspecialchars($item['quantity']); ?></td>
+                        <td><?php echo htmlspecialchars($item['product_name']); ?></td>
+                        <td>₱<?php echo number_format($item['amount'], 2); ?></td>
                     </tr>
                 <?php endforeach; ?>
-                <!-- End PHP loop here -->
             </tbody>
         </table>
 
         <div class="total">
-            Total <strong>₱<?php echo number_format($total_amount, 2); ?></strong>
+            <strong>Total: ₱<?php echo number_format($order['total_amount'], 2); ?></strong>
+        </div>
+
+        <!-- Display Cash and Change -->
+        <div class="payment-info">
+            <p>Cash Given: ₱<?php echo number_format($cash_given, 2); ?></p>
+            <p>Change: ₱<?php echo number_format($change, 2); ?></p>
         </div>
     </div>
-
-
 </body>
 
 </html>
