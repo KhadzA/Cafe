@@ -21,6 +21,7 @@ $routes = [
     'MenuConfig' => 'pages/admin/menuConfig.admin.php',
     'CreateOrders' => 'pages/admin/createOrders.admin.php',
     'Orders' => 'pages/admin/orders.admin.php',
+    'OrderReceipt' => 'pages/admin/createReceipt.admin.php',
 
     
     // 'control/login.control.php',

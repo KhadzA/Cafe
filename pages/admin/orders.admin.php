@@ -120,6 +120,23 @@ include 'view/orders.view.php';
 
 
     </div>
+
+    <!-- Calculator Modal -->
+    <div id="calculator-modal" class="modal" style="display: none;">
+        <div class="modalContent">
+            <span class="close">&times;</span>
+            <h2>Cash Input</h2>
+            <div class="Cash">
+                <p>Total Price: ₱<span id="total-price"></span></p>
+                <label for="cash-given">Cash Given:</label>
+                <input type="number" id="cash-given" placeholder="Enter cash amount">
+                <button id="calculate-change">Calculate Change</button>
+                <p>Change: ₱<span id="change-amount">0.00</span></p>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 </html>
