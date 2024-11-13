@@ -13,6 +13,10 @@ class OrdersCtrl extends OrdersModel {
                 break;
 
             case 'delete_order':
+                $this->markOrder($_POST['order_id']);
+                break;
+
+            case 'literal_delete_order':
                 $this->deleteOrder($_POST['order_id']);
                 break;
 
@@ -26,6 +30,10 @@ class OrdersCtrl extends OrdersModel {
         return $this->getAllOrders();
     }
 
+    public function getHistory() {
+        return $this->getHistoryOrders();
+    }
+
     public function getOrderById($order_id) {
         return $this->getOrderDetails($order_id); 
     }
@@ -34,6 +42,9 @@ class OrdersCtrl extends OrdersModel {
         return $this->getOrderItemsByOrderId($order_id); 
     }
 
+    public function markOrder($order_id) {
+        return $this->markOrderAsHistory($order_id); 
+    }
 
 
 

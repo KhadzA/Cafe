@@ -22,6 +22,7 @@ $routes = [
     'CreateOrders' => 'pages/admin/createOrders.admin.php',
     'Orders' => 'pages/admin/orders.admin.php',
     'OrderReceipt' => 'pages/admin/createReceipt.admin.php',
+    'History' => 'pages/admin/history.admin.php',
 
     
     // 'control/login.control.php',

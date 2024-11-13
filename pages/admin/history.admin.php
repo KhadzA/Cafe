@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id']) && $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-include 'view/createOrders.view.php';
+include 'view/orders.view.php';
 
 ?>
 
@@ -18,17 +18,17 @@ include 'view/createOrders.view.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Orders</title>
+    <title>History</title>
     <link rel="icon" href="../../image/Cafe_Logo.png" type="image/icon type">
 
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/script.js"></script>
-    <script src="../../js/createOrders.js"></script>
+    <script src="../../js/orders.js"></script>
     <!-- <script src="../../resources/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
     <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script> -->
 
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/createOrders.css">
+    <link rel="stylesheet" href="../../css/orders.css">
     <!-- <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css"> -->
 
@@ -51,7 +51,7 @@ include 'view/createOrders.view.php';
                         <a href="../../AdminDashboard">
                             <img src="../../image/cafe-alegria.png" alt="logo" id="logo">
                         </a>
-                        <li class="title_section">Create Orders</li>
+                        <li class="title_section">History</li>
                     </section>
                 </div>
             </div>
@@ -85,60 +85,58 @@ include 'view/createOrders.view.php';
 
         <main class="content">
 
-            <div class="whole">
-                
-                <div class="left_content">
-                    <div class="content_title">
-                        <h3>Categories</h3>
-                    </div>
-                    <div class="category-list">
-                        <ul>
-                            <li><a href="#" class="category-link" data-category-id="">All</a></li>
-                            <?php foreach ($categories as $category): ?>
-                                <li>
-                                    <a href="#" class="category-link" data-category-id="<?php echo $category['category_id']; ?>">
-                                        <?php echo htmlspecialchars($category['category_name']); ?>
-                                    </a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
+            <div class="orderBox">
 
-                </div>
+                <?php foreach ($ordersHistory as $order): ?>
 
-                <div class="center_content">
-                    <div class="content_title">
-                        <h3>Menu</h3>
-                    </div>
-                    <div id="product-list" class="products_content">
+                    <div class="order-container">
+
+                        <div class="orderDetail">
+                            <p class="mainDetail"> Order <?php echo $order['order_id']; ?> </p>
+                            <p> <?php echo $order['order_date']; ?> </p>
+                            <p> ₱<?php echo $order['total_amount']; ?> </p>
+                        </div>
                         
-                    </div>
-                </div>
+                        <div class="funcThings">      
 
-                <div class="right_content">
-                    <div class="cart_header">
-                        <h3>Cart</h3>
-                        <i id="removeAllFromCart" class="fas fa-minus-circle" title="Remove All"></i>
+                            <select class="order-status-dropdown" data-order-id="<?php echo $order['order_id']; ?>">
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+
+
+                            <button class="literal-delete-order" data-order-id="<?php echo $order['order_id']; ?>">Delete</button>
+                            <button class="generate-receipt" data-order-id="<?php echo $order['order_id']; ?>">Show Receipt</button>
+                        </div>
+
                     </div>
 
-                    <div id="cart" class="product_cart">
-                        
-                    </div>
-
-                    <div class="place_order">
-                        <section>
-                            <li class="total_amount">Total Amount: ₱0.00</li> 
-                        </section>
-                        <section>
-                            <button id="place_order">Place Order</button>
-                        </section>
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
 
             </div>
+
         </main>
+
+
     </div>
+
+    <!-- Calculator Modal -->
+    <div id="calculator-modal" class="modal" style="display: none;">
+        <div class="modalContent">
+            <span class="close">&times;</span>
+            <h2>Cash Input</h2>
+            <div class="Cash">
+                <p>Total Price: ₱<span id="total-price"></span></p>
+                <label for="cash-given">Cash Given:</label>
+                <input type="number" id="cash-given" placeholder="Enter cash amount">
+                <button id="calculate-change">Calculate Change</button>
+                <p>Change: ₱<span id="change-amount">0.00</span></p>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 </html>

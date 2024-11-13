@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2024 at 07:34 AM
+-- Generation Time: Nov 13, 2024 at 06:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -58,7 +58,28 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`category_id`, `user_id`, `category_name`, `description`, `has_size`, `has_sugar_level`) VALUES
 (61, NULL, 'Bombaclat', '', 1, 1),
-(62, NULL, 'Ibol', '', 1, 0);
+(62, NULL, 'Ibol', '', 1, 0),
+(64, NULL, 'My orders', '', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `history_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `archived_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`history_id`, `order_id`, `archived_at`) VALUES
+(1, 114, '2024-11-13 05:28:43'),
+(2, 118, '2024-11-13 05:45:59');
 
 -- --------------------------------------------------------
 
@@ -79,7 +100,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `order_date`, `total_amount`, `status`) VALUES
-(113, 1, '2024-11-11 06:26:36', 188.00, 'Pending');
+(114, 1, '2024-11-11 11:15:07', 188.00, ''),
+(118, 1, '2024-11-13 05:39:16', 386.00, 'Pending'),
+(119, 1, '2024-11-13 05:39:20', 366.00, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -106,8 +129,12 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`order_item_id`, `order_id`, `product_id`, `user_id`, `product_name`, `quantity`, `size_id`, `size_name`, `sugar_level_id`, `sugar_level_name`, `price`) VALUES
-(40, 113, 33, 1, 'Bombaclat', 1, 20, 'Medium', 24, '25', 89.00),
-(41, 113, 34, 1, 'My Idol', 1, 21, 'Large', 25, '', 99.00);
+(42, 114, 33, 1, 'Bombaclat', 1, 20, 'Medium', 24, '25', 89.00),
+(43, 114, 34, 1, 'My Idol', 1, 21, 'Large', 25, '', 99.00),
+(48, 118, 33, 1, 'Bombaclat', 1, 20, 'Medium', 24, '25', 89.00),
+(49, 118, 34, 1, 'My Idol', 3, 21, 'Large', 25, '', 99.00),
+(50, 119, 33, 1, 'Bombaclat', 3, 20, 'Medium', 24, '25', 89.00),
+(51, 119, 34, 1, 'My Idol', 1, 21, 'Large', 25, '', 99.00);
 
 -- --------------------------------------------------------
 
@@ -222,6 +249,13 @@ ALTER TABLE `category`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`history_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -233,11 +267,11 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`order_item_id`),
-  ADD KEY `order_id` (`order_id`),
   ADD KEY `product_id` (`product_id`),
   ADD KEY `size_id` (`size_id`),
   ADD KEY `sugar_level_id` (`sugar_level_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `order_items_ibfk_1` (`order_id`);
 
 --
 -- Indexes for table `product`
@@ -285,37 +319,43 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
+-- AUTO_INCREMENT for table `history`
+--
+ALTER TABLE `history`
+  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `product_size`
 --
 ALTER TABLE `product_size`
-  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `product_sugar_level`
 --
 ALTER TABLE `product_sugar_level`
-  MODIFY `sugar_level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `sugar_level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -343,6 +383,12 @@ ALTER TABLE `category`
   ADD CONSTRAINT `category_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
+-- Constraints for table `history`
+--
+ALTER TABLE `history`
+  ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
@@ -352,7 +398,7 @@ ALTER TABLE `orders`
 -- Constraints for table `order_items`
 --
 ALTER TABLE `order_items`
-  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
   ADD CONSTRAINT `order_items_ibfk_3` FOREIGN KEY (`size_id`) REFERENCES `product_size` (`size_id`),
   ADD CONSTRAINT `order_items_ibfk_4` FOREIGN KEY (`sugar_level_id`) REFERENCES `product_sugar_level` (`sugar_level_id`),

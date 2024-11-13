@@ -11,6 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $orders = $controller->getOrders();
 
+$ordersHistory = $controller->getHistory();
+
 $order_id = $_GET['order_id'] ?? null;
 $order = $controller->getOrderById($order_id); 
 $order_items = $controller->getOrderItems($order_id);

@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    
     document.querySelectorAll('.order-status-dropdown').forEach(dropdown => {
         dropdown.addEventListener('change', function() {
             const orderId = this.getAttribute('data-order-id');
@@ -12,17 +13,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    document.querySelectorAll('.delete-order').forEach(button => {
+    document.querySelectorAll('.literal-delete-order').forEach(button => {
         button.addEventListener('click', function() {
             const orderId = this.getAttribute('data-order-id');
 
             fetch('../../view/orders.view.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({ action: 'delete_order', order_id: orderId })
+                body: new URLSearchParams({ action: 'literal_delete_order', order_id: orderId })
             }).then(() => {
                 window.location.reload();
             });
+        });
+    });
+
+    // document.querySelectorAll('.delete-order').forEach(button => {
+    //     button.addEventListener('click', function() {
+    //         const orderId = this.getAttribute('data-order-id');
+
+    //         fetch('../../view/orders.view.php', {
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    //             body: new URLSearchParams({ action: 'delete_order', order_id: orderId })
+    //         }).then(() => {
+    //             // Remove the order from the DOM
+    //             this.closest('.order-container').remove();
+    //         });
+    //     });
+    // });
+
+    document.querySelectorAll('.delete-order').forEach(button => {
+        button.addEventListener('click', function() {
+            const orderId = this.getAttribute('data-order-id');
+            const orderStatus = this.closest('.order-container').getAttribute('data-status'); 
+
+            if (orderStatus === 'Pending') {
+                alert("You cannot remove a pending order.");
+                return;
+            }
+
+            if (confirm("Are you sure you want to remove this order?")) {
+                fetch('../../view/orders.view.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({ action: 'delete_order', order_id: orderId })
+                }).then(() => {
+                    // Remove the order from the DOM
+                    this.closest('.order-container').remove();
+                });
+            }
         });
     });
 
@@ -30,7 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// Get the modal elements
+
+
+    // Get the modal elements
     const modal = document.getElementById("calculator-modal");
     const totalPriceSpan = document.getElementById("total-price");
     const cashGivenInput = document.getElementById("cash-given");
