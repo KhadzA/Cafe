@@ -72,7 +72,7 @@ include 'view/orders.view.php';
                 <?php foreach ($order_items as $item): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($item['quantity']); ?></td>
-                        <td><?php echo htmlspecialchars($item['product_name']); ?></td>
+                        <td><?php echo htmlspecialchars($item['product_name'] . " " . ($item['size'] ?? '') . " " . ($item['sugar_level'] ?? '')); ?></td>
                         <td>₱<?php echo number_format($item['amount'], 2); ?></td>
                     </tr>
                 <?php endforeach; ?>
