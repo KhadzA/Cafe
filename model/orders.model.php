@@ -7,12 +7,23 @@ class OrdersModel extends dBase {
     public function __construct() {
     }
 
+    // public function getAllOrders() {
+    //     $sql = "SELECT order_id, order_date, total_amount FROM orders ORDER BY order_date DESC";
+    //     $stmt = $this->connect()->prepare($sql);
+    //     $stmt->execute();
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
+
     public function getAllOrders() {
-        $sql = "SELECT order_id, order_date, total_amount FROM orders ORDER BY order_date DESC";
+        $sql = "SELECT order_id, order_date, total_amount 
+                FROM orders 
+                WHERE order_id NOT IN (SELECT order_id FROM history)
+                ORDER BY order_date DESC";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     public function deleteOrder($orderId) {
         $sql = "DELETE FROM orders WHERE order_id = :order_id";
@@ -30,7 +41,6 @@ class OrdersModel extends dBase {
     }
 
 
-    // Retrieves order details by order ID
     public function getOrderDetails($order_id) {
         $sql = "SELECT order_id, order_date, total_amount, status FROM orders WHERE order_id = :order_id";
         $stmt = $this->connect()->prepare($sql);
@@ -72,6 +82,23 @@ class OrdersModel extends dBase {
                             LEFT JOIN product_size ps ON oi.size_id = ps.size_id
                             WHERE oi.order_id = ?");
         $stmt->execute([$orderId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function markOrderAsHistory($orderId) {
+        $sql = "INSERT INTO history (order_id) VALUES (:order_id)";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->bindParam(':order_id', $orderId, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function getHistoryOrders() {
+        $sql = "SELECT orders.order_id, orders.order_date, orders.total_amount
+                FROM orders
+                INNER JOIN history ON orders.order_id = history.order_id
+                ORDER BY history.archived_at DESC";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

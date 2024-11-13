@@ -72,7 +72,7 @@ include 'view/createOrders.view.php';
                     <li id="CreateOrders" class="Menu"><i class="fas fa-cash-register"></i> <span>Create Orders</span></li>
                     <li id="orders" class="orders"><i class="fas fa-th-list"></i> <span>Orders</span></li>
                     <li id="manage" class="manage"><i class="fas fa-users-cog"></i> <span>Manage</span></li>
-                    <li id="history" class="history"><i class="fas fa-history"></i> <span>History</span></li>
+                    <li id="History" class="History"><i class="fas fa-history"></i> <span>History</span></li>
                 </section>
             </div>
 
