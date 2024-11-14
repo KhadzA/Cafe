@@ -24,20 +24,19 @@ include __DIR__ . '/../../view/menu.view.php';
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/menu.js"></script>
     <script src="../../js/script.js"></script>
-    
-    <!-- <script src="../../resources/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
-    <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script> -->
+    <script src="../../resources/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+    <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script>
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/menuConfig.css">
-    <!-- <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css"> -->
+    <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> -->
 
 </head>
 
@@ -72,7 +71,7 @@ include __DIR__ . '/../../view/menu.view.php';
                     <li id="MenuConfig" class="MenuConfig"><i class="fa-solid fa-sliders"></i> <span>Menu Config</span></li>
                     <li id="CreateOrders" class="CreateOrders"><i class="fas fa-cash-register"></i> <span>Create Orders</span></li>
                     <li id="Orders" class="Orders"><i class="fas fa-th-list"></i> <span>Orders</span></li>
-                    <li id="manage" class="manage"><i class="fas fa-users-cog"></i> <span>Manage</span></li>
+                    <li id="Manage" class="Manage"><i class="fas fa-users-cog"></i> <span>Manage</span></li>
                     <li id="History" class="History"><i class="fas fa-history"></i> <span>History</span></li>
                 </section>
             </div>

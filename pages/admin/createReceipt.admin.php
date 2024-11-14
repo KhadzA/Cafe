@@ -18,19 +18,19 @@ include 'view/orders.view.php';
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <!-- <script src="../../js/script.js"></script> -->
     <script src="../../js/orders.js"></script>
-    <!-- <script src="../../resources/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
-    <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script> -->
+    <script src="../../resources/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+    <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script>
 
     <!-- <link rel="stylesheet" href="../../css/style.css"> -->
     <link rel="stylesheet" href="../../css/orders.css">
-    <!-- <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css"> -->
+    <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> -->
 
 </head>
 
@@ -41,7 +41,7 @@ include 'view/orders.view.php';
         window.onload = function() {
             window.print();  // Trigger the print dialog when the page loads
             window.onafterprint = function() {
-                window.close();  // Close the window after printing is done
+                window.close();  
             };
         };
     </script>
@@ -72,7 +72,10 @@ include 'view/orders.view.php';
                 <?php foreach ($order_items as $item): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($item['quantity']); ?></td>
-                        <td><?php echo htmlspecialchars($item['product_name'] . " " . ($item['size'] ?? '') . " " . ($item['sugar_level'] ?? '')); ?></td>
+                        <td>
+                            <?php echo htmlspecialchars($item['product_name']); ?><br>
+                            <?php echo htmlspecialchars(($item['size'] ?? '') . " " . ($item['sugar_level'] ?? '')); ?>
+                        </td>
                         <td>₱<?php echo number_format($item['amount'], 2); ?></td>
                     </tr>
                 <?php endforeach; ?>
@@ -83,7 +86,6 @@ include 'view/orders.view.php';
             <strong>Total: ₱<?php echo number_format($order['total_amount'], 2); ?></strong>
         </div>
 
-        <!-- Display Cash and Change -->
         <div class="payment-info">
             <p>Cash Given: ₱<?php echo number_format($cash_given, 2); ?></p>
             <p>Change: ₱<?php echo number_format($change, 2); ?></p>
