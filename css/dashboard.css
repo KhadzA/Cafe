@@ -1,0 +1,118 @@
+.chart-container {
+    width: 100%;
+    height: 42rem;
+    margin: 0 auto;
+    overflow-y: scroll;
+}
+
+.content {
+    padding: 1rem;
+}
+
+.summary_show {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.summary_show p {
+    color: #6cb685;
+}
+
+.summary-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.summary-card h6 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: #666;
+}
+
+.summary-card p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.dashboard_body {
+    width: 100%;
+}
+
+.squares {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.chart-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd; 
+}
+
+.chart-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.data_from_graphical {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.data_from_graphical div {
+    text-align: center;
+}
+
+.data_from_graphical h6 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.data_from_graphical p {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #6cb685;
+}
+
+.date {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.daily, .weekly, .monthly, .yearly {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .summary_show {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .summary-card {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 1rem;
+    }
+
+    .squares {
+        grid-template-columns: 1fr;
+    }
+}
