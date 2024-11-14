@@ -93,19 +93,19 @@ class CreateOrdersModel extends dBase {
     }
 
     
-public function getSizeNameById($sizeId) {
-    $sql = "SELECT size FROM product_size WHERE size_id = ?";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$sizeId]);
-    return $stmt->fetchColumn();
-}
+    public function getSizeNameById($sizeId) {
+        $sql = "SELECT size FROM product_size WHERE size_id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$sizeId]);
+        return $stmt->fetchColumn();
+    }
 
-public function getSugarLevelNameById($sugarLevelId) {
-    $sql = "SELECT sugar_level FROM product_sugar_level WHERE sugar_level_id = ?";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute([$sugarLevelId]);
-    return $stmt->fetchColumn();
-}
+    public function getSugarLevelNameById($sugarLevelId) {
+        $sql = "SELECT sugar_level FROM product_sugar_level WHERE sugar_level_id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$sugarLevelId]);
+        return $stmt->fetchColumn();
+    }
 
     
 
@@ -119,12 +119,12 @@ public function getSugarLevelNameById($sugarLevelId) {
 
 
 
-public function addOrderItem($orderId, $productId, $userId, $quantity, $sizeId, $sugarLevelId, $price, $productName, $sizeName, $sugarLevelName) {
-    $sql = "INSERT INTO order_items (order_id, product_id, product_name, user_id, quantity, size_id, sugar_level_id, price, size_name, sugar_level_name) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $this->conn->prepare($sql);
-    $stmt->execute([$orderId, $productId, $productName, $userId, $quantity, $sizeId, $sugarLevelId, $price, $sizeName, $sugarLevelName]);
-}
+    public function addOrderItem($orderId, $productId, $userId, $quantity, $sizeId, $sugarLevelId, $price, $productName, $sizeName, $sugarLevelName) {
+        $sql = "INSERT INTO order_items (order_id, product_id, product_name, user_id, quantity, size_id, sugar_level_id, price, size_name, sugar_level_name) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$orderId, $productId, $productName, $userId, $quantity, $sizeId, $sugarLevelId, $price, $sizeName, $sugarLevelName]);
+    }
 
 
 

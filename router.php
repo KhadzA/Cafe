@@ -13,6 +13,8 @@ $routes = [
 
     // Cashier
     'cashier' => 'pages/cashier/menu.cashier.php',
+    'order' => 'pages/cashier/orders.cashier.php',
+    'history' => 'pages/cashier/history.cashier.php',
     'settings' => 'pages/settings.php',
 
     // Admin
@@ -24,20 +26,6 @@ $routes = [
     'OrderReceipt' => 'pages/admin/createReceipt.admin.php',
     'Manage' => 'pages/admin/manageUser.admin.php',
     'History' => 'pages/admin/history.admin.php',
-
-    
-    // 'control/login.control.php',
-    // 'control/signup.control.php',
-    // 'control/menu.control.php',
-
-    // 'model/login.model.php',
-    // 'model/signup.model.php',
-    // 'model/menu.model.php',
-
-    // 'view/login.view.php',
-    // 'view/signup.view.php',
-    // 'view/menu.view.php',
-
 
 ];
 
@@ -60,6 +48,7 @@ function routeToController($uri, $routes) {
 function isUserRole($role) {
     return isset($_SESSION["role"]) && $_SESSION["role"] === $role;
 }
+
 
 function abort($code = 404) {
     http_response_code($code);

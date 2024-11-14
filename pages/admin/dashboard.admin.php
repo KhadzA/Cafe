@@ -24,20 +24,21 @@ include 'view/dashboard.view.php';
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/script.js"></script>
     <script src="../../js/dashboard.js"></script>
-    <!-- <script src="../../resources/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
-    <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script> -->
+    <script src="../../resources/node_modules/chart.js/dist/chart.umd.js"></script>
+    <script src="../../resources/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+    <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script>
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/dashboard.css">
-    <!-- <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css"> -->
+    <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> -->
 
 </head>
 
@@ -91,15 +92,15 @@ include 'view/dashboard.view.php';
 
                     <div class="summary_show">
                         <li>
-                            <h6>Profit Today</h6>
+                            <h6>Total Today</h6>
                             <p>₱<?php echo number_format($profitToday, 2); ?></p>
                         </li>
                         <li>
-                            <h6>Month Profit</h6>
+                            <h6>Month Total</h6>
                             <p>₱<?php echo number_format($profitMonth, 2); ?></p>
                         </li>
                         <li>
-                            <h6>Year Profit</h6>
+                            <h6>Year Total</h6>
                             <p>₱<?php echo number_format($profitYear, 2); ?></p>
                         </li>
                     </div>
