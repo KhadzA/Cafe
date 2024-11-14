@@ -56,6 +56,7 @@ function abort($code = 404) {
     die();
 }
 
+<<<<<<< HEAD
 routeToController($uri, $routes);
 
 
@@ -118,3 +119,6 @@ routeToController($uri, $routes);
 // }
 
 // routeToController($routes);
+=======
+routeToController($uri, $routes);
+>>>>>>> 6440243 (DONE?)
