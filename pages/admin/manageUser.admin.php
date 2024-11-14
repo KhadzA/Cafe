@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id']) && $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-include 'view/orders.view.php';
+include 'view/manageUser.view.php';
 
 ?>
 
@@ -18,17 +18,17 @@ include 'view/orders.view.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orders</title>
+    <title>Manage Users</title>
     <link rel="icon" href="../../image/Cafe_Logo.png" type="image/icon type">
 
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/script.js"></script>
-    <script src="../../js/orders.js"></script>
+    <script src="../../js/manageUser.js"></script>
     <!-- <script src="../../resources/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
     <script src="../../resources/fontawesome-free-6.6.0-web/js/all.js"></script> -->
 
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/orders.css">
+    <link rel="stylesheet" href="../../css/manageUser.css">
     <!-- <link rel="stylesheet" href="../../resources/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/fontawesome-free-6.6.0-web/css/all.css"> -->
 
@@ -51,7 +51,7 @@ include 'view/orders.view.php';
                         <a href="../../AdminDashboard">
                             <img src="../../image/cafe-alegria.png" alt="logo" id="logo">
                         </a>
-                        <li class="title_section">Orders</li>
+                        <li class="title_section">Manage Users</li>
                     </section>
                 </div>
             </div>
@@ -84,59 +84,50 @@ include 'view/orders.view.php';
         </nav>
 
         <main class="content">
+            <div class="userBox">
 
-            <div class="orderBox">
-
-                <?php foreach ($orders as $order): ?>
-
-                    <div class="order-container">
-
-                        <div class="orderDetail">
-                            <p class="mainDetail"> Order <?php echo $order['order_id']; ?> </p>
-                            <p> <?php echo $order['order_date']; ?> </p>
-                            <p> ₱<?php echo $order['total_amount']; ?> </p>
-                        </div>
-                        
-                        <div class="funcThings">      
-
-                            <select class="order-status-dropdown" data-order-id="<?php echo $order['order_id']; ?>">
-                                <option value="pending">Pending</option>
-                                <option value="completed">Completed</option>
-                                <option value="cancelled">Cancelled</option>
-                            </select>
-
-
-                            <button class="delete-order" data-order-id="<?php echo $order['order_id']; ?>">Remove</button>
-                            <button class="generate-receipt" data-order-id="<?php echo $order['order_id']; ?>">Show Receipt</button>
-                        </div>
-
+                <?php if (!empty($users)): ?>
+                    <div class="userBox">
+                        <?php foreach ($users as $user): ?>
+                            <div class="user-container">
+                                <div class="userDetail">
+                                    <p class="mainDetail">User: <?php echo htmlspecialchars($user['username']); ?></p>
+                                    <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
+                                    <p>Role: <?php echo htmlspecialchars($user['role']); ?></p>
+                                </div>
+                                <div class="userActions">
+                                    <button class="edit-user" data-user-id="<?php echo $user['user_id']; ?>" data-username="<?php echo $user['username']; ?>">Edit</button>
+                                    <button class="delete-user" data-user-id="<?php echo $user['user_id']; ?>">Delete</button>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
+                <?php else: ?>
+                    <p>No users found.</p>
+                <?php endif; ?>
 
-                <?php endforeach; ?>
+                <!-- Modal for Editing User -->
+                <div id="editUserModal" class="modal">
+                    <div class="modalContent">
+                        <h2>Edit User</h2>
+                        <form id="editUserForm">
+                            <input type="hidden" id="userId" name="user_id">
+                            <label for="newUsername">New Username:</label>
+                            <input type="text" id="newUsername" name="username" required>
+                            
+                            <label for="newPassword">New Password:</label>
+                            <input type="password" id="newPassword" name="password">
+                            
+                            <button type="submit">Update User</button>
+                            <button type="button" id="closeModal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+
 
             </div>
-
         </main>
-
-
     </div>
-
-    <!-- Calculator Modal -->
-    <div id="calculator-modal" class="modal" style="display: none;">
-        <div class="modalContent">
-            <span class="close">&times;</span>
-            <h2>Cash Input</h2>
-            <div class="Cash">
-                <p>Total Price: ₱<span id="total-price"></span></p>
-                <label for="cash-given">Cash Given:</label>
-                <input type="number" id="cash-given" placeholder="Enter cash amount">
-                <button id="calculate-change">Calculate Change</button>
-                <p>Change: ₱<span id="change-amount">0.00</span></p>
-            </div>
-        </div>
-    </div>
-
-
 </body>
 
 </html>

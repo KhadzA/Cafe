@@ -72,7 +72,7 @@ include __DIR__ . '/../../view/menu.view.php';
                     <li id="MenuConfig" class="MenuConfig"><i class="fa-solid fa-sliders"></i> <span>Menu Config</span></li>
                     <li id="CreateOrders" class="CreateOrders"><i class="fas fa-cash-register"></i> <span>Create Orders</span></li>
                     <li id="Orders" class="Orders"><i class="fas fa-th-list"></i> <span>Orders</span></li>
-                    <li id="manage" class="manage"><i class="fas fa-users-cog"></i> <span>Manage</span></li>
+                    <li id="Manage" class="Manage"><i class="fas fa-users-cog"></i> <span>Manage</span></li>
                     <li id="History" class="History"><i class="fas fa-history"></i> <span>History</span></li>
                 </section>
             </div>
