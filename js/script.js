@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Event listener for the Sign Up and Login links
     const signUpLinks = document.querySelectorAll('.toSignUp-text a, .toLogin a');
     signUpLinks.forEach(link => {
         link.addEventListener('click', function (e) {
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Event listener for sidebar menu items
     const menuItems = document.querySelectorAll('.side_nav li');
     menuItems.forEach(item => {
         item.addEventListener('click', function (e) {
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Sidebar toggle functionality
     const sidebar = document.querySelector('.side_nav');
     const toggleBtn = document.getElementById('toggle-side_nav');
 

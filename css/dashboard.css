@@ -46,7 +46,7 @@
 
 .squares {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Default 2 columns */
     gap: 1rem;
 }
 
@@ -100,19 +100,42 @@
     margin: 0.5rem;
 }
 
+@media (max-width: 1024px) {
+    .squares {
+        grid-template-columns: 1fr; 
+    }
+}
+
 @media (max-width: 768px) {
     .summary_show {
         flex-direction: column;
         align-items: center;
     }
 
-    .summary-card {
-        width: 100%;
-        max-width: 300px;
-        margin-bottom: 1rem;
+    .squares {
+        grid-template-columns: 1fr; 
+        overflow: auto;
+    }
+
+    .daily, .weekly, .monthly, .yearly {
+        width: 650px;
+        height: auto;
+    }
+}
+
+@media (max-width: 375px) {
+    .summary_show {
+        flex-direction: column;
+        align-items: center;
     }
 
     .squares {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; 
+        overflow: auto;
+    }
+
+    .daily, .weekly, .monthly, .yearly {
+        width: 200px;
+        height: auto;
     }
 }

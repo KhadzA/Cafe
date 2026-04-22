@@ -221,3 +221,58 @@ li#Config {
     }
 }
 
+@media (max-width: 375px) {
+    html {
+        background: var(--bs-body-color);
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .body {
+        height: auto;
+        width: 375px;
+    }
+
+    #header {
+
+    }
+
+    .top_left img#logo {
+        width: 5rem;
+        height: auto;
+        margin-right: 1.5rem;
+    }
+    
+    .title_section {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #F0F0F0;
+    }
+
+    .side_nav {
+        width: 10rem;
+        height: auto;
+    }
+
+    .side_nav.minimized {
+        height: auto;
+        width: 4rem;
+        margin: 0;
+    }
+
+    .toggle-btn {
+        transform: rotate(180deg);
+    }
+
+    .side_nav li {
+        width: 8rem; 
+        height: 3.5rem;
+    }
+
+    .content p {
+        margin-left: 4.5rem; 
+        margin-top: 2rem; 
+        color: white;
+    }
+}
