@@ -30,10 +30,11 @@ $routes = [
 ];
 
 
-function routeToController($uri, $routes) {
+function routeToController($uri, $routes)
+{
     if (array_key_exists($uri, $routes)) {
         $filePath = $routes[$uri];
-        
+
         if (file_exists($filePath)) {
             require $filePath;
         } else {
@@ -45,18 +46,19 @@ function routeToController($uri, $routes) {
 }
 
 
-function isUserRole($role) {
+function isUserRole($role)
+{
     return isset($_SESSION["role"]) && $_SESSION["role"] === $role;
 }
 
 
-function abort($code = 404) {
+function abort($code = 404)
+{
     http_response_code($code);
     require "pages/{$code}.php";
     die();
 }
 
-<<<<<<< HEAD
 routeToController($uri, $routes);
 
 
@@ -119,6 +121,3 @@ routeToController($uri, $routes);
 // }
 
 // routeToController($routes);
-=======
-routeToController($uri, $routes);
->>>>>>> 6440243 (DONE?)
